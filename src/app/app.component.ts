@@ -2,6 +2,7 @@ import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
 import { TextBoxComponent } from '@syncfusion/ej2-angular-inputs';
 import { extend } from '@syncfusion/ej2-base';
 import {KanbanComponent,CardSettingsModel} from '@syncfusion/ej2-angular-kanban';
+import { Query } from '@syncfusion/ej2-data';
 import { kanbanData } from './data';
 
 @Component({
@@ -20,5 +21,16 @@ export class AppComponent {
     grabberField: 'Color',
     footerCssField: 'ClassName',
   };
-  
+  searchClick(e: KeyboardEvent): void {
+    let searchValue: string = (<HTMLInputElement>e.target).value;
+    let searchQuery: Query = new Query();
+    if (searchValue !== '') {
+        searchQuery = new Query().search(searchValue, ['Id', 'Summary'], 'contains', true);
+    }
+    (this.kanbanObj as any).query = searchQuery;
+}
+reset(): void {
+    this.textBoxObj.value = '';
+    (this.kanbanObj as any).query = new Query();
+}
 }
