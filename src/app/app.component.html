@@ -1,15 +1,5 @@
 <div class="control-section">
   <div class="content-wrapper">
-    <table>
-      <tbody>
-        <td style="width: 200px">
-          <!-- <ejs-textbox id="search" #search placeholder="Enter search text" [showClearButton]="true"
-            (keyup)="searchClick($event)"></ejs-textbox> -->
-        </td>
-        <td>
-          <button ejs-button class="e-btn" id="reset" (click)='reset()'>Reset</button>
-      </tbody>
-    </table>
     <ejs-kanban #kanbanObj keyField="Status" [dataSource]="kanbanData" [cardSettings]="cardSettings">
       <e-columns>
         <e-column headerText="To Do" keyField="Open"></e-column>
